@@ -1,0 +1,6 @@
+-- Your SQL goes here
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  login VARCHAR NOT NULL,
+  password VARCHAR NOT NULL
+)

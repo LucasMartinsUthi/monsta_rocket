@@ -1,0 +1,18 @@
+[package]
+name = "diesel_demo"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+diesel = { version = "1.4.7", features = ["postgres"] }
+serde = {version = "1.0.130", features = ["derive"]}
+
+[dependencies.rocket]
+version = "0.5.0-rc.2"
+features = ["json", "secrets"]
+
+[dependencies.rocket_sync_db_pools]
+version = "0.1.0-rc.2"
+features = ["diesel_postgres_pool"]
