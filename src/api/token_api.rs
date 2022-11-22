@@ -1,26 +1,16 @@
 use rocket::{
-    response::{status::{Created, NoContent}},
     serde::json::Json,
 };
 use rocket::{ catch, catchers};
 use rocket::Request;
 use rocket::http::Status;
 
-use crate::{ApiError, ApiErrorResponse};
+use crate::{ApiError};
 
 use rocket::routes;
 
 use crate::MonstaToken;
 
-// #[catch(default)]
-// fn default_catcher_token(status: Status, req: &Request) -> ApiError {
-//     println!("status: {:?}", status);
-//     println!("req: {:?}", req);
-    
-//     ApiError::InvalidToken(Json("a".to_string()))
-// }
-
-//catcher for 400
 #[catch(400)]
 pub fn bad_request(status: Status, req: &Request) -> ApiError {
     println!("status: {:?}", status);
@@ -39,12 +29,6 @@ pub async fn token(token: Result<MonstaToken, ApiError>) -> Result<Json<String>,
         Err(e) => Err(e)
     }
 }
-
-// #[rocket::get("/token", rank = 2)]
-// pub async fn no_token() -> Json<String> {    
-//     Json("Missing Token".to_string())
-// }
-
 
 pub fn routes() -> Vec<rocket::Route> {
     routes![token]
