@@ -4,6 +4,5 @@ use diesel_demo::{api::*, PgConnection};
 fn rocket() -> _ {
     rocket::build()
         .attach(PgConnection::fairing())
-        .mount("/", token_api::routes())
-        .register("/", token_api::catchers())
+        .mount("/", admin_key_api::routes())
 }
